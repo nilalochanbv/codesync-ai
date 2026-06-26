@@ -1,0 +1,151 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500;600&display=swap');
+
+@theme {
+  --color-background: #1e1e1e;
+  --color-card: #181818;
+  --color-popover: #1c1c1c;
+  
+  --color-primary: #007acc; /* VS Code Blue */
+  --color-primary-hover: #0098ff;
+  --color-primary-glow: rgba(0, 122, 204, 0.15);
+  
+  --color-secondary: #007acc;
+  --color-secondary-hover: #0098ff;
+  --color-secondary-glow: rgba(0, 122, 204, 0.15);
+  
+  --color-accent: #389438; /* Green */
+  --color-accent-hover: #4bb34b;
+  --color-accent-glow: rgba(56, 148, 56, 0.15);
+  
+  --color-border: #2b2b2b; /* Crisp VS Code border color */
+  --color-muted: #808080;
+  
+  --color-text: #cccccc; /* VS Code gray text */
+  --color-text-muted: #858585;
+  --color-text-dark: #616161;
+  
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'Fira Code', 'JetBrains Mono', Consolas, monospace;
+
+  --shadow-premium: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-glow-purple: 0 0 10px rgba(0, 122, 204, 0.2);
+  --shadow-glow-cyan: 0 0 10px rgba(0, 122, 204, 0.2);
+}
+
+@layer base {
+  body {
+    @apply bg-background text-text font-sans antialiased overflow-x-hidden selection:bg-primary/30 selection:text-white;
+  }
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070709;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1b1b22;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2b2b36;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(15, 15, 19, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.glass-panel-heavy {
+  background: rgba(15, 15, 19, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Live cursor glow */
+@keyframes cursorPulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+.cursor-glow {
+  animation: cursorPulse 2s infinite ease-in-out;
+}
+
+/* Collaborative Remote Cursor & Selection Styles */
+.remote-cursor-purple { --cursor-color: #a78bfa; }
+.remote-cursor-cyan { --cursor-color: #22d3ee; }
+.remote-cursor-emerald { --cursor-color: #34d399; }
+.remote-cursor-amber { --cursor-color: #fbbf24; }
+.remote-cursor-pink { --cursor-color: #f472b6; }
+.remote-cursor-blue { --cursor-color: #60a5fa; }
+.remote-cursor-red { --cursor-color: #f87171; }
+
+.remote-selection-purple { background-color: rgba(167, 139, 250, 0.15) !important; }
+.remote-selection-cyan { background-color: rgba(34, 211, 238, 0.15) !important; }
+.remote-selection-emerald { background-color: rgba(52, 211, 153, 0.15) !important; }
+.remote-selection-amber { background-color: rgba(251, 191, 36, 0.15) !important; }
+.remote-selection-pink { background-color: rgba(244, 114, 182, 0.15) !important; }
+.remote-selection-blue { background-color: rgba(96, 165, 250, 0.15) !important; }
+.remote-selection-red { background-color: rgba(248, 113, 113, 0.15) !important; }
+
+.remote-cursor-bar {
+  position: absolute;
+  width: 2px !important;
+  background-color: var(--cursor-color) !important;
+  box-shadow: 0 0 8px var(--cursor-color);
+  z-index: 10;
+}
+
+.remote-cursor-label {
+  position: absolute;
+  top: -18px;
+  left: 2px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 9px;
+  font-weight: bold;
+  padding: 1px 5px;
+  border-radius: 3px 3px 3px 0;
+  color: #070709;
+  background-color: var(--cursor-color);
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+  transition: opacity 0.15s ease;
+}
+
+/* Monaco Breakpoints & Debugging Gutter Styles */
+.monaco-breakpoint-glyph {
+  background: #f87171 !important;
+  border-radius: 50% !important;
+  width: 10px !important;
+  height: 10px !important;
+  margin-left: 5px !important;
+  margin-top: 5px !important;
+  cursor: pointer;
+}
+
+.monaco-debug-active-line {
+  background: rgba(253, 224, 71, 0.1) !important;
+}
+
+.monaco-debug-active-glyph {
+  background: #fbbf24 !important;
+  clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%) !important;
+  width: 10px !important;
+  height: 10px !important;
+  margin-left: 5px !important;
+  margin-top: 5px !important;
+}
