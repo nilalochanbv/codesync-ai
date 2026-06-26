@@ -73,9 +73,13 @@ Create a `.env` file inside the `server/` directory:
 ```env
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/codesync
-JWT_SECRET=super_secret_codesync_token_key_123!
+JWT_SECRET=your_secure_jwt_secret_here
 CLIENT_URL=http://localhost:5173
 ```
+
+> [!WARNING]
+> Do not use default or example values (like `your_secure_jwt_secret_here`) in a production deployment. Ensure your production `.env` files contain strong, randomly generated secrets and are excluded from Git repository tracking.
+
 
 Install server dependencies and start the dev server:
 ```bash
