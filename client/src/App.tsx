@@ -487,7 +487,7 @@ function WorkspaceRoom({ activeProject, user, showToast }: { activeProject: any,
     const newSocket = io(BACKEND_URL, {
       transports: ['websocket'],
       auth: {
-        token: localStorage.getItem('token')
+        token: localStorage.getItem('codesync_token')
       }
     });
 
